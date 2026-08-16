@@ -1,12 +1,7 @@
-<?php if (!empty($error_message)): ?>
-    <div class="error">
-        <p><?= html_escape($error_message) ?>
-            <?php if (!empty($reason)): ?>
-                <br><?= nl2br(html_escape($reason)) ?>
-            <?php endif; ?>
-        </p>
-        <?php if (!empty($query)): ?>
-            <p>Query: <code><?= html_escape($query) ?></code></p>
-        <?php endif; ?>
-    </div>
-<?php endif; ?>
+<?php
+
+$error_message ??= 'Đã có lỗi xảy ra';
+$error = "<p class=\"error\">$error_message";
+$error .= isset($reason) ? " vì:<br>$reason</p>" : "</p>";
+$error .= isset($query) ? "<p>Câu truy vấn là: {$query}</p>" : '';
+echo $error;
